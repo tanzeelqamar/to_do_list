@@ -1,14 +1,22 @@
-import inquirer from "inquirer";
-const randomNumber = Math.floor(Math.random() *6+1);
-const answer = await inquirer.prompt([
-    {name : "userguessednumber",
-    type: "number",
-    message : "please guess a number between 1-6",
-}]);
-if(
-    answer.userguessednumber===randomNumber
-) {
-console.log("Congratulations you guessed right number")}
-else{
-    console.log("Sorry! wrong guess");
+import inquirer from "inquirer"
+let toDo =[]
+let condition="true"
+while (condition)
+{
+let toDoQuestions = await inquirer.prompt(
+    [{
+        name: "firstQuestion",
+        type: "input",
+        message: "what would you like to add  in your to dos?",
+    },
+    {
+        name: "secondQuestion",
+        type: "confirm",
+        message: "would you like to add more to dos?",
+        default: "true",
+    }
+]);
+toDo.push (toDoQuestions.firstQuestion);
+console.log(toDo);
+condition = toDoQuestions.secondQuestion;
 }
